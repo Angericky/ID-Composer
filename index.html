@@ -84,6 +84,22 @@
 
 
 <style>
+  /* 背景样式 */
+  .bg-gradient-blur {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: 
+          radial-gradient(circle at top right, rgba(70, 130, 180, 0.5), transparent 70%),
+          radial-gradient(circle at center, #fffdceff 0%, transparent 70%),
+          radial-gradient(circle at bottom left, rgba(147, 112, 219, 0.4), transparent 70%);
+      filter: blur(80px);
+  }
+
   .morphing-text {
       background-image: linear-gradient(to right, 
        #f39c12 0%, #e67e22 25%, #d35400 75%, #f1c40f 100%
@@ -125,7 +141,9 @@
 
   .prompt-text {
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.625;
     display: flex;
     align-items: center;
   }
@@ -141,26 +159,38 @@
     text-transform: uppercase;
   }
 
-  <style>
-    .video-wrapper {
-      position: relative;
-      /* Key: absolutely positioned children are anchored to this container */
-      display: inline-block;
-      /* Container width adapts to the video, does not occupy the full row */
-      /* Optional: limit the maximum video width as needed */
-      max-width: 600px;
-    }
-  
-    /* Keep the original video styles (extend as needed) */
-    .results-media {
-      width: 100%;
-      /* Video width adapts to the container */
-      display: block;
-      /* Remove the default bottom gap under videos */
-    }
-  </style>
+  .video-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 600px;
+  }
 
-<body>
+  .results-media {
+    width: 100%;
+    display: block;
+  }
+
+  .video-separator {
+    height: 2px;
+    background-image: linear-gradient(to right, #ccc 50%, transparent 50%);
+    background-size: 12px 2px;
+    margin: 0px 0;
+  }
+
+  .video-label {
+    text-align: center;
+    margin-top: 8px;
+    font-weight: bold;
+  }
+</style>
+
+<body class="bg-white min-h-screen">
+
+  <!-- 背景渐变模糊 -->
+  <div class="bg-gradient-blur"></div>
+
+  <!-- 主要内容 -->
+  <main class="relative z-10 min-h-screen">
 
   <!-- Section 1: Banner -->
   <section class="hero">
@@ -521,23 +551,27 @@
           <hr class="results-divider" />
 
             <!-- Example 6 -->
-            <div class="columns is-multiline results-grid mt-4">
-              <div class="column is-6">
-                <div class="video-wrapper">
-                  <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video6_id.mp4" loading="lazy"
-                    preload="metadata" autoplay loop muted playsinline></video>
-                    Our
-                </div>
-              </div>
-              <div class="column is-6">
-                <div class="video-wrapper">
-                  <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video6_ph.mp4" loading="lazy"
-                    preload="metadata" autoplay loop muted playsinline></video>
-                    Phantom
-                </div>
-              </div>
-            </div>
             <div class="results-pair-wrapper">
+              <!-- Videos section -->
+              <div class="columns is-multiline results-grid mt-4" style="margin-bottom: 0px;">
+                <div class="column is-6">
+                  <div class="video-wrapper">
+                    <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video6_id.mp4" loading="lazy"
+                      preload="metadata" autoplay loop muted playsinline></video>
+                    <div class="video-label">Our</div>
+                  </div>
+                </div>
+                <div class="column is-6">
+                  <div class="video-wrapper">
+                    <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video6_ph.mp4" loading="lazy"
+                      preload="metadata" autoplay loop muted playsinline></video>
+                    <div class="video-label">Phantom</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Gray dashed line separator -->
+              <div class="video-separator"></div>
+              <!-- References and prompt section -->
               <div class="columns is-multiline is-vcentered">
                 <div class="column is-6">
                   <div class="results-ref-list">
@@ -562,23 +596,27 @@
  
 
             <!-- Example 7 -->
-            <div class="columns is-multiline results-grid mt-4">
-              <div class="column is-6">
-                <div class="video-wrapper">
-                  <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video7_id.mp4" loading="lazy"
-                    preload="metadata" autoplay loop muted playsinline></video>
-                    Our
-                </div>
-              </div>
-              <div class="column is-6">
-                <div class="video-wrapper">
-                  <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video7_ph.mp4" loading="lazy"
-                    preload="metadata" autoplay loop muted playsinline></video>
-                    Phantom
-                </div>
-              </div>
-            </div>
             <div class="results-pair-wrapper">
+              <!-- Videos section -->
+              <div class="columns is-multiline results-grid mt-4" style="margin-bottom: 0px;">
+                <div class="column is-6">
+                  <div class="video-wrapper">
+                    <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video7_id.mp4" loading="lazy"
+                      preload="metadata" autoplay loop muted playsinline></video>
+                    <div class="video-label">Our</div>
+                  </div>
+                </div>
+                <div class="column is-6">
+                  <div class="video-wrapper">
+                    <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video7_ph.mp4" loading="lazy"
+                      preload="metadata" autoplay loop muted playsinline></video>
+                    <div class="video-label">Phantom</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Gray dashed line separator -->
+              <div class="video-separator"></div>
+              <!-- References and prompt section -->
               <div class="columns is-multiline is-vcentered">
                 <div class="column is-6">
                   <div class="results-ref-list">
@@ -606,23 +644,27 @@
             <hr class="results-divider" />
 
             <!-- Example 8 -->
-            <div class="columns is-multiline results-grid mt-4">
-              <div class="column is-6">
-                <div class="video-wrapper">
-                  <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video8_id.mp4" loading="lazy"
-                    preload="metadata" autoplay loop muted playsinline></video>
-                    Our
-                </div>
-              </div>
-              <div class="column is-6">
-                <div class="video-wrapper">
-                  <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video8_ph.mp4" loading="lazy"
-                    preload="metadata" autoplay loop muted playsinline></video>
-                    Phantom
-                </div>
-              </div>
-            </div>
             <div class="results-pair-wrapper">
+              <!-- Videos section -->
+              <div class="columns is-multiline results-grid mt-4" style="margin-bottom: 0px;">
+                <div class="column is-6">
+                  <div class="video-wrapper">
+                    <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video8_id.mp4" loading="lazy"
+                      preload="metadata" autoplay loop muted playsinline></video>
+                    <div class="video-label">Our</div>
+                  </div>
+                </div>
+                <div class="column is-6">
+                  <div class="video-wrapper">
+                    <video class="results-media" src="./assets/examples/ID-Crafter_s2v_video8_ph.mp4" loading="lazy"
+                      preload="metadata" autoplay loop muted playsinline></video>
+                    <div class="video-label">Phantom</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Gray dashed line separator -->
+              <div class="video-separator"></div>
+              <!-- References and prompt section -->
               <div class="columns is-multiline is-vcentered">
                 <div class="column is-6">
                   <div class="results-ref-list">
@@ -736,6 +778,8 @@
 
     </section>
   </footer>
+
+  </main>
 
 
 </body>

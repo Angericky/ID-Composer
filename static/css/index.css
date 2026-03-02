@@ -258,7 +258,6 @@ tr.result-row:last-child {
 
 /* Make prompt readable on black background */
 .results-pair-box.custom-prompt-box,
-.results-pair-box.custom-prompt-box .prompt-text,
 .results-pair-box.custom-prompt-box .prompt-title {
   color: #fff;
 }
@@ -271,8 +270,9 @@ tr.result-row:last-child {
 
 .results-plus {
   flex: 0 0 auto;
-  width: 28px;
-  height: 28px;
+  width: 48px;
+  height: 48px;
+  color: transparent;
 }
 
 /* Make prompt box fill the height of results-meta row */
@@ -322,19 +322,24 @@ tr.result-row:last-child {
   object-fit: contain;
 }
 
-/* Black background + vertical centering for video5 refs+prompt pair */
+/* Styling for reference+prompt pairs */
 .results-pair-wrapper {
-  background: #000;
-  padding: 0px 16px;
-  margin: 0 12px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2xl);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 16px;
+  margin: 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.results-pair-wrapper:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .results-pair-wrapper .columns {
   align-items: center;
-}
-
-.results-pair-wrapper .prompt-text {
-  color: #fff;
 }
 
 /* Only for assets/examples/ID-Crafter_s2v_video1_sub3.png */

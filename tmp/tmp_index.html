@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JarvisEvo Static Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 背景样式 */
+        .bg-gradient-blur {
+            background-image: 
+                radial-gradient(circle at top right, rgba(70, 130, 180, 0.5), transparent 70%),
+                radial-gradient(circle at center, #fffdceff 0%, transparent 70%),
+                radial-gradient(circle at bottom left, rgba(147, 112, 219, 0.4), transparent 70%);
+            filter: blur(80px);
+        }
+
+        /* 卡片样式 */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #111;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .feature-card {
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #fff;
+        }
+
+        /* 数字徽章样式 */
+        .number-badge {
+            background: linear-gradient(to bottom right, #333, #111, #000);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.3), 
+                0 2px 4px rgba(0, 0, 0, 0.2), 
+                inset 0 -2px 4px rgba(0, 0, 0, 0.2), 
+                inset 0 2px 2px rgba(255, 255, 255, 0.3);
+            transform: translateZ(0);
+        }
+
+        .dark .number-badge {
+            background: linear-gradient(to bottom right, #ddd, #fff, #eee);
+        }
+
+        /* 图片容器样式 */
+        .image-container {
+            backdrop-filter: blur(2xl);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .image-container:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .dark .image-container {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 模态框样式 */
+        .modal-backdrop {
+            backdrop-filter: blur(2xl);
+        }
+
+        /* SVG 滤镜 */
+        .glass-effect {
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            filter: url(#glass-distortion);
+            isolation: isolate;
+        }
+
+        /* 液体玻璃效果按钮 */
+        .glass-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            background: transparent;
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            z-index: 0;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            filter: url(#glass-distortion);
+            isolation: isolate;
+        }
+
+        .glass-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-button .button-content {
+            position: relative;
+            z-index: 3;
+            font-weight: 600;
+            color: rgb(31 41 55);
+        }
+
+        .dark .glass-button .button-content {
+            color: rgb(229 231 235);
+        }
+
+        /* 液体玻璃效果卡片 */
+        .glass-card {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            filter: url(#glass-distortion);
+            isolation: isolate;
+        }
+
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-card .card-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* 玻璃分隔线 */
+        .glass-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6) 20%, rgba(255, 255, 255, 0.6) 80%, transparent);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-950 min-h-screen">
+    <!-- 背景渐变模糊 -->
+    <div class="fixed inset-0 z-0 pointer-events-none bg-gradient-blur"></div>
+
+    <!-- 主要内容 -->
+    <main class="relative z-10 min-h-screen">
+        <!-- 页面内容 -->
+        <div class="max-w-7xl mx-auto px-6 py-20">
+            <!-- Hero Section -->
+            <div class="flex flex-col gap-4 items-center justify-center mb-20">
+                <h1 class="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-bold dark:text-white flex flex-col gap-4 md:gap-6">
+                    <!-- First Line: Icon + JarvisEvo -->
+                    <span class="block leading-tight flex items-center justify-center gap-3">
+                        <img
+                            src="../icon/icon2.png"
+                            alt="JarvisEvo Icon"
+                            class="w-20 h-20 md:w-32 md:h-32 transition-all duration-300 hover:scale-105 hover:rotate-3 self-center"
+                            style="
+                                filter: saturate(0.7) contrast(0.9) brightness(1.05) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06)) drop-shadow(0 0 24px rgba(99, 102, 241, 0.08));
+                                transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+                                vertical-align: middle;
+                                opacity: 0.9;
+                            "
+                        />
+                        <span class="font-[family-name:var(--font-playwrite-cz)] text-black dark:text-white tracking-normal">JarvisEvo</span>
+                    </span>
+
+                    <!-- Second Line: A Co-Evolutionary Editor-Evaluator Agent -->
+                    <span class="block leading-tight">A Co-Evolutionary Editor-Evaluator Agent</span>
+
+                    <!-- Third Line: for Creative Image Editing -->
+                    <span class="block leading-tight">for Creative Image Editing</span>
+                </h1>
+
+                <p class="text-lg md:text-xl leading-relaxed tracking-tight text-gray-600 dark:text-gray-300 max-w-3xl text-center mx-auto mt-6">
+                    JarvisEvo operates like an expert human designer—it edits iteratively, selects appropriate tools,
+                    evaluates intermediate outputs, and reflects on its decisions to refine visual results.
+                </p>
+
+                <!-- Language Support Section -->
+                <div class="max-w-4xl mx-auto mt-8">
+                    <div class="text-xl md:text-2xl text-center dark:text-neutral-200">
+                        We support{" "}
+                        <span class="italic text-blue-600 dark:text-blue-400 cursor-pointer hover:underline">Preservative Editing</span>
+                        ,{" "}
+                        <span class="italic text-orange-600 dark:text-orange-400 cursor-pointer hover:underline">Generative Editing</span>
+                        , and{" "}
+                        <span class="italic text-purple-600 dark:text-purple-400 cursor-pointer hover:underline">Self-Reflection</span>
+                        .
+                    </div>
+                </div>
+
+                <!-- Authors and Affiliations Card - Liquid Glass Style -->
+                <div class="mt-8 w-full max-w-5xl glass-card">
+                    <div class="card-content w-full flex flex-col">
+                        <!-- Action Buttons -->
+                        <div class="flex items-center justify-center gap-4 mb-8 flex-wrap">
+                            <!-- Paper Button -->
+                            <a href="https://arxiv.org/pdf/2511.23002" target="_blank" rel="noopener noreferrer" class="glass-button">
+                                <span class="button-content">📄 Paper</span>
+                            </a>
+
+                            <!-- Code Button -->
+                            <a href="https://github.com/LYL1015/JarvisEvo" target="_blank" rel="noopener noreferrer" class="glass-button">
+                                <span class="button-content">💻 Code</span>
+                            </a>
+
+                            <!-- Model Button -->
+                            <a href="https://huggingface.co/JarvisEvo/JarvisEvo" target="_blank" rel="noopener noreferrer" class="glass-button">
+                                <span class="button-content">🤗 Model</span>
+                            </a>
+
+                            <!-- Dataset Button -->
+                            <a href="https://huggingface.co/datasets/JarvisEvo/ArtEdit-Bench" target="_blank" rel="noopener noreferrer" class="glass-button">
+                                <span class="button-content">🤗 Dataset</span>
+                            </a>
+                        </div>
+
+                        <!-- Authors -->
+                        <div class="text-center mb-6">
+                            <p class="text-base text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
+                                <a href="https://lyl1015.github.io/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Yunlong Lin</a>,
+                                {' '}Linqing Wang,
+                                {' '}<a href="https://github.com/kunjie-lin" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Kunjie Lin</a>,
+                                {' '}<a href="https://github.com/iendi" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Zixu Lin</a>,
+                                {' '}<a href="https://kxgong.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Kaixiong Gong</a>,
+                                {' '}<a href="https://fenglinglwb.github.io/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Wenbo Li</a>,
+                                {' '}<a href="https://linb203.github.io/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Bin Lin</a>,
+                                {' '}Zhenxi Li,
+                                {' '}<a href="https://shiyi-zh0408.github.io/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Shiyi Zhang</a>,
+                                <br />
+                                <a href="https://github.com/1230young" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Yuyang Peng</a>,
+                                {' '}<a href="https://github.com/Dai-Wenxun" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Wenxun Dai</a>,
+                                {' '}<a href="https://scholar.google.com/citations?user=k5hVBfMAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Xinghao Ding</a>,
+                                {' '}<a href="https://scholar.google.com/citations?user=VXQV5xwAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Chunyu Wang</a>,
+                                {' '}<a href="https://openreview.net/profile?id=~Qinglin_Lu2" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Qinglin Lu</a>
+                            </p>
+                        </div>
+
+                        <!-- Glass divider -->
+                        <div class="glass-divider mx-auto w-full mb-6"></div>
+
+                        <!-- Affiliations -->
+                        <div class="flex items-center justify-center gap-12 flex-wrap">
+                            <a href="https://hunyuan.tencent.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 transition-all hover:scale-105">
+                                <img src="../icon/hunyuan.png" alt="Tencent Hunyuan" class="h-12 w-auto" />
+                                <span class="text-lg font-semibold text-gray-800 dark:text-gray-200">Tencent Hunyuan</span>
+                            </a>
+                            <a href="https://www.xmu.edu.cn/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 transition-all hover:scale-105">
+                                <img src="../icon/xmu.png" alt="Xiamen University" class="h-12 w-auto" />
+                                <span class="text-lg font-semibold text-gray-800 dark:text-gray-200">Xiamen University</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features 部分 -->
+            <div class="grid md:grid-cols-[60%_40%] gap-12 items-center mb-32">
+                <!-- 文本内容 -->
+                <div class="space-y-6 md:order-2">
+                    <div>
+                        <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white tracking-tighter leading-none mb-3">
+                            Key Features
+                        </h2>
+                    </div>
+
+                    <div class="space-y-4 mt-8">
+                        <!-- 特性 1 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">1</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Interleaved Multimodal Chain-of-Thought (iMCoT)
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                Closed-loop reasoning that validates steps against visual feedback to minimize hallucinations.
+                            </p>
+                        </div>
+
+                        <!-- 特性 2 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">2</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Synergistic Editor-Evaluator Optimization (SEPO)
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                Dual-loop system where the model acts as both editor and evaluator, refining strategies via intrinsic rewards.
+                            </p>
+                        </div>
+
+                        <!-- 特性 3 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">3</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Unified Preservative & Generative Editing
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                Seamlessly integrates Adobe Lightroom (200+ tools) and Qwen-Image-Edit for the full spectrum of editing tasks.
+                            </p>
+                        </div>
+
+                        <!-- 特性 4 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">4</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Self-Reflective Learning Mechanism
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                Automatically generates reflection trajectories to learn from mistakes and optimize tool selection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图片 -->
+                <div class="flex items-center justify-center md:order-1">
+                    <div class="image-container p-3 cursor-pointer">
+                        <img 
+                            src="../figs/framwork_new.png" 
+                            alt="Key Features" 
+                            class="w-full h-auto"
+                            onclick="openModal('../figs/framwork_new.png')"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Distribution 部分 -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- 文本内容 -->
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white tracking-tighter leading-none mb-3">
+                            Data Distribution
+                        </h2>
+                        <p class="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-light tracking-tight">
+                            ArtEdit Dataset—a bilingual dataset (English & Chinese) with 230K samples.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 mt-8">
+                        <!-- 亮点 1 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">1</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Rich Task Taxonomy
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                30 task types balanced between 15 preservative (color grading, exposure) and 15 generative (object removal, style transfer, background replacement) editing tasks.
+                            </p>
+                        </div>
+
+                        <!-- 亮点 2 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">2</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Wide Scenario Coverage
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                10 major scene categories with 37+ subcategories covering portraits, landscapes, architecture, wildlife, urban scenes, still life, and design graphics.
+                            </p>
+                        </div>
+
+                        <!-- 亮点 3 -->
+                        <div class="feature-card relative p-5 pl-6">
+                            <div class="number-badge absolute -left-3 -top-3 w-10 h-10 rounded-full flex items-center justify-center">
+                                <span class="text-sm font-bold text-white dark:text-gray-900">3</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 text-base tracking-tight pr-4">
+                                Structured Training Subsets
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                ArtEdit-Lr (120K) for retouching, ArtEdit-Gen (60K) for generation, and ArtEdit-Eval (50K) for evaluation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图片 -->
+                <div class="flex items-center justify-center">
+                    <div class="image-container p-3 cursor-pointer w-full max-w-2xl">
+                        <img 
+                            src="../figs/data.png" 
+                            alt="Data Distribution" 
+                            class="w-full h-auto"
+                            onclick="openModal('../figs/data.png')"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 图片放大模态框 -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden items-center justify-center modal-backdrop p-4 sm:p-8">
+        <div class="relative max-w-7xl w-full max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+            <!-- 关闭按钮 -->
+            <button 
+                class="absolute -top-10 sm:-top-14 right-0 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-4xl sm:text-5xl font-light transition-colors z-10"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+            <!-- 放大图片 -->
+            <div class="backdrop-blur-2xl bg-white/60 dark:bg-white/30 rounded-3xl p-3 sm:p-4 border border-white/60 shadow-2xl overflow-hidden">
+                <img 
+                    id="modalImage" 
+                    src="" 
+                    alt="Enlarged view" 
+                    class="w-full h-auto max-h-[calc(90vh-3rem)] object-contain"
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- SVG 滤镜 -->
+    <svg style="display: none">
+        <filter
+            id="glass-distortion"
+            x="0%"
+            y="0%"
+            width="100%"
+            height="100%"
+            filterUnits="objectBoundingBox"
+        >
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.01 0.01"
+                numOctaves="1"
+                seed="5"
+                result="turbulence"
+            />
+            <feComponentTransfer in="turbulence" result="mapped">
+                <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+                <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+                <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+            </feComponentTransfer>
+            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+            <feSpecularLighting
+                in="softMap"
+                surfaceScale="5"
+                specularConstant="1"
+                specularExponent="100"
+                lightingColor="white"
+                result="specLight"
+            >
+                <fePointLight x="-200" y="-200" z="300" />
+            </feSpecularLighting>
+            <feComposite
+                in="specLight"
+                operator="arithmetic"
+                k1="0"
+                k2="1"
+                k3="1"
+                k4="0"
+                result="litImage"
+            />
+            <feDisplacementMap
+                in="SourceGraphic"
+                in2="softMap"
+                scale="15"
+                xChannelSelector="R"
+                yChannelSelector="G"
+            />
+        </filter>
+    </svg>
+
+    <script>
+        // 模态框功能
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // 点击模态框外部关闭
+        document.getElementById('imageModal').addEventListener('click', closeModal);
+
+        // 切换深色模式
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // 检查系统深色模式偏好
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>
