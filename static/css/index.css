@@ -438,14 +438,14 @@ tr.result-row:last-child {
 @media screen and (min-width: 1400px) {
   .sidebar {
     /* Calculate position to align with container but stick to left */
-    left: calc(50% - 730px); /* 50% - (max-desktop-width / 2) - extra-margin */
+    left: calc(50% - 680px); /* 50% - (max-desktop-width / 2) - extra-margin */
   }
 }
 
 /* Adjust for very wide screens if needed */
 @media screen and (min-width: 1600px) {
   .sidebar {
-    left: calc(50% - 800px);
+    left: calc(50% - 750px);
   }
 }
 
