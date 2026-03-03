@@ -48,4 +48,23 @@ $(document).ready(function() {
 
     bulmaSlider.attach();
 
+    // Copy BibTeX functionality
+    $('#copy-bibtex-btn').click(function() {
+      var bibtexText = $('#bibtex-content').text().trim();
+      navigator.clipboard.writeText(bibtexText).then(function() {
+        var $btn = $('#copy-bibtex-btn');
+        var originalHtml = $btn.html();
+        
+        $btn.html('<span class="icon"><i class="fas fa-check"></i></span><span>Copied!</span>');
+        $btn.addClass('is-success').removeClass('is-dark is-outlined');
+        
+        setTimeout(function() {
+          $btn.html(originalHtml);
+          $btn.removeClass('is-success').addClass('is-dark is-outlined');
+        }, 2000);
+      }, function(err) {
+        console.error('Could not copy text: ', err);
+      });
+    });
+
 })

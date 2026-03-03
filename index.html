@@ -762,7 +762,14 @@
         <div class="columns is-centered">
           <div class="column is-full-width">
             <h2 class="title is-3 has-text-centered">📄&nbsp;&nbsp; BibTeX &nbsp;&nbsp;📄</h2>
-            <pre class="bibtex-code">@misc{pan2025idcraftervlmgroundedonlinerl,
+            <div style="position: relative;">
+              <button id="copy-bibtex-btn" class="button is-small is-dark is-outlined is-rounded" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+                <span class="icon">
+                  <i class="fas fa-copy"></i>
+                </span>
+                <span>Copy</span>
+              </button>
+              <pre class="bibtex-code" id="bibtex-content">@misc{pan2025idcraftervlmgroundedonlinerl,
       title={ID-Crafter: VLM-Grounded Online RL for Compositional Multi-Subject Video Generation}, 
       author={Panwang Pan and Jingjing Zhao and Yuchen Lin and Chenguo Lin and Chenxin Li and Hengyu Liu and Tingting Shen and Yadong MU},
       year={2025},
@@ -772,6 +779,7 @@
       url={https://arxiv.org/abs/2511.00511}, 
 }
           </pre>
+            </div>
           </div>
         </div>
     </section>
