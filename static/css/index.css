@@ -426,18 +426,26 @@ tr.result-row:last-child {
   transition: all 0.3s ease;
 }
 
-@media screen and (min-width: 1400px) {
+/* Show on desktop screens (>= 1024px) */
+@media screen and (min-width: 1024px) {
   .sidebar {
     display: block;
+    left: 20px; /* Stick to left edge on smaller desktops */
+  }
+}
+
+/* Center-aligned positioning for larger screens */
+@media screen and (min-width: 1400px) {
+  .sidebar {
     /* Calculate position to align with container but stick to left */
-    left: calc(50% - 680px); /* 50% - (max-desktop-width / 2) - extra-margin */
+    left: calc(50% - 780px); /* 50% - (max-desktop-width / 2) - extra-margin */
   }
 }
 
 /* Adjust for very wide screens if needed */
 @media screen and (min-width: 1600px) {
   .sidebar {
-    left: calc(50% - 750px);
+    left: calc(50% - 850px);
   }
 }
 
