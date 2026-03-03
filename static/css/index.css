@@ -182,7 +182,7 @@ tr.result-row:last-child {
 }
 
 .inserted-image {
-  max-width: 80%;     /* Set the maximum width for the image */
+  max-width: 100%;     /* Set the maximum width for the image */
   height: auto;       /* Ensure the height adjusts automatically to maintain aspect ratio */
   margin: 30px;       /* Add space above and below the image */
   margin-top: 10px;
