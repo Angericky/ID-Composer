@@ -193,6 +193,51 @@ tr.result-row:last-child {
   box-shadow: 2px 2px 10px 3px #00000030;
 }
 
+/* 布局容器 */
+  .main-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px; /* 目录和正文的间距 */
+  }
+
+  /* 左侧目录：关键样式 */
+  .toc-sidebar {
+    width: 200px; /* 宽度固定 */
+    height: fit-content;
+    position: sticky; /* 核心：吸附效果 */
+    top: 50px; /* 距离顶部 50px 时吸附 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* 目录链接样式 */
+  .toc-link {
+    text-decoration: none;
+    color: #555;
+    padding: 5px 10px;
+    border-left: 2px solid transparent; /*以此做高亮指示条*/
+    transition: all 0.3s;
+  }
+  
+  .toc-link:hover, .toc-link.active {
+    color: #007bff; /* 激活颜色 */
+    border-left-color: #007bff;
+    background-color: #f0f7ff;
+  }
+
+  /* 右侧正文 */
+  .content-column {
+    flex: 1; /* 占据剩余宽度 */
+    min-width: 0; /* 防止视频撑爆 */
+  }
+
+  /* 移动端隐藏侧边栏 */
+  @media (max-width: 1000px) {
+    .toc-sidebar { display: none; }
+  }
+  
 /* Section 5: Results layout (non-carousel) */
 .results-media {
   width: 100%;
@@ -359,4 +404,86 @@ tr.result-row:last-child {
 }
 .actions-row .link-block {
   display: inline-flex;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  left: 14px;
+  top: 30%;
+  transform: translateY(-50%);
+  width: auto;
+  min-width: 160px;
+  z-index: 1000;
+  display: none; /* Default hidden */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 24px 12px;
+  /* border-radius: 20px; */
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); */
+  /* border: 1px solid rgba(255, 255, 255, 0.4); */
+  transition: all 0.3s ease;
+}
+
+@media screen and (min-width: 1400px) {
+  .sidebar {
+    display: block;
+    /* Calculate position to align with container but stick to left */
+    left: calc(50% - 680px); /* 50% - (max-desktop-width / 2) - extra-margin */
+  }
+}
+
+/* Adjust for very wide screens if needed */
+@media screen and (min-width: 1600px) {
+  .sidebar {
+    left: calc(50% - 750px);
+  }
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-nav li a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-nav li a:hover {
+  color: #3273dc;
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Optional: Add a small indicator on hover */
+.sidebar-nav li a::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  height: 16px;
+  width: 3px;
+  background-color: #3273dc;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-nav li a:hover::before {
+  transform: translateY(-50%) scaleY(1);
 }
