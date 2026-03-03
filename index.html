@@ -80,6 +80,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_lazy_load.js"></script>
 </head>
 
 
@@ -277,8 +278,7 @@
         <!-- 2. Reference image area -->
         <div class="rounded-xl pb-2">
 
-          <video class="w-full rounded-lg" src="assets/examples/ID-Composer_s2v_video1.mp4" loading="lazy" autoplay loop
-            muted></video>
+          <video class="w-full rounded-lg lazy-video" data-src="assets/examples/ID-Composer_s2v_video1.mp4" preload="none" loop muted playsinline></video>
 
           <div class="columns is-vcentered ">
             <div class="column is-6">
@@ -425,8 +425,7 @@
           </p>
           <div class="columns is-multiline results-grid is-centered">
             <div class="column is-6">
-              <video class="results-media" src="./assets/examples/ID-Composer_s2v_video1.mp4" loading="lazy"
-                preload="metadata" autoplay loop muted playsinline></video>
+              <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video1.mp4" preload="none" loop muted playsinline></video>
               <div class="results-ref-list">
                 <div class="results-ref">
                   <img loading="lazy" src="./assets/examples/ID-Composer_s2v_video1_sub1.png" alt="reference 1" />
@@ -449,8 +448,7 @@
             </div>
 
             <div class="column is-6">
-              <video class="results-media" src="./assets/examples/ID-Composer_s2v_video2.mp4" loading="lazy"
-                preload="metadata" autoplay loop muted playsinline></video>
+              <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video2.mp4" preload="none" loop muted playsinline></video>
               <div class="results-ref-list">
                 <div class="results-ref">
                   <img loading="lazy" src="./assets/examples/ID-Composer_s2v_video2_sub1.png" alt="reference 1" />
@@ -474,8 +472,7 @@
               producing vivid videos aligned with the given prompt.
             </p>
             <div class="column is-6">
-              <video class="results-media" src="./assets/examples/ID-Composer_s2v_video3.mp4" loading="lazy"
-                preload="metadata" autoplay loop muted playsinline></video>
+              <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video3.mp4" preload="none" loop muted playsinline></video>
               <div class="results-ref-list">
                 <div class="results-ref">
                   <img loading="lazy" src="./assets/examples/ID-Composer_s2v_video3_sub1.png" alt="reference 1" />
@@ -496,8 +493,7 @@
             </div>
 
             <div class="column is-6">
-              <video class="results-media" src="./assets/examples/ID-Composer_s2v_video4.mp4" loading="lazy"
-                preload="metadata" autoplay loop muted playsinline></video>
+              <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video4.mp4" preload="none" loop muted playsinline></video>
               <div class="results-ref-list">
                 <div class="results-ref">
                   <img loading="lazy" src="./assets/examples/ID-Composer_s2v_video4_sub1.png" alt="reference 1" />
@@ -556,15 +552,13 @@
               <div class="columns is-multiline results-grid mt-4" style="margin-bottom: 0px;">
                 <div class="column is-6">
                   <div class="video-wrapper">
-                    <video class="results-media" src="./assets/examples/ID-Composer_s2v_video6_id.mp4" loading="lazy"
-                      preload="metadata" autoplay loop muted playsinline></video>
+                    <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video6_id.mp4" preload="none" loop muted playsinline></video>
                     <div class="video-label">Our</div>
                   </div>
                 </div>
                 <div class="column is-6">
                   <div class="video-wrapper">
-                    <video class="results-media" src="./assets/examples/ID-Composer_s2v_video6_ph.mp4" loading="lazy"
-                      preload="metadata" autoplay loop muted playsinline></video>
+                    <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video6_ph.mp4" preload="none" loop muted playsinline></video>
                     <div class="video-label">Phantom</div>
                   </div>
                 </div>
@@ -601,15 +595,13 @@
               <div class="columns is-multiline results-grid mt-4" style="margin-bottom: 0px;">
                 <div class="column is-6">
                   <div class="video-wrapper">
-                    <video class="results-media" src="./assets/examples/ID-Composer_s2v_video7_id.mp4" loading="lazy"
-                      preload="metadata" autoplay loop muted playsinline></video>
+                    <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video7_id.mp4" preload="none" loop muted playsinline></video>
                     <div class="video-label">Our</div>
                   </div>
                 </div>
                 <div class="column is-6">
                   <div class="video-wrapper">
-                    <video class="results-media" src="./assets/examples/ID-Composer_s2v_video7_ph.mp4" loading="lazy"
-                      preload="metadata" autoplay loop muted playsinline></video>
+                    <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video7_ph.mp4" preload="none" loop muted playsinline></video>
                     <div class="video-label">Phantom</div>
                   </div>
                 </div>
@@ -649,15 +641,13 @@
               <div class="columns is-multiline results-grid mt-4" style="margin-bottom: 0px;">
                 <div class="column is-6">
                   <div class="video-wrapper">
-                    <video class="results-media" src="./assets/examples/ID-Composer_s2v_video8_id.mp4" loading="lazy"
-                      preload="metadata" autoplay loop muted playsinline></video>
+                    <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video8_id.mp4" preload="none" loop muted playsinline></video>
                     <div class="video-label">Our</div>
                   </div>
                 </div>
                 <div class="column is-6">
                   <div class="video-wrapper">
-                    <video class="results-media" src="./assets/examples/ID-Composer_s2v_video8_ph.mp4" loading="lazy"
-                      preload="metadata" autoplay loop muted playsinline></video>
+                    <video class="results-media lazy-video" data-src="./assets/examples/ID-Composer_s2v_video8_ph.mp4" preload="none" loop muted playsinline></video>
                     <div class="video-label">Phantom</div>
                   </div>
                 </div>
@@ -707,19 +697,19 @@
             <table style="width: 100%">
               <tbody>
                 <tr class="result-row">
-                  <td><video src="./assets/examples/comparsion_1.mp4" loading="lazy" autoplay loop muted></video></td>
+                  <td><video class="lazy-video" data-src="./assets/examples/comparsion_1.mp4" preload="none" loop muted playsinline></video></td>
 
                   <!-- Insert a script after index.js in the head to handle copy and notifications -->
                   <script src="./static/js/index.js"></script>
                   <!-- <td><img loading="lazy" src="./static/images/object/gt/00.png"></td>
-                  <td><video src="./static/images/object/ours/00.mp4" width="80%" loading="lazy" autoplay loop muted></video></td>
-                  <td><video src="./static/images/object/ours/splited/00.mp4" width="80%" autoplay loop muted></video> -->
+                  <td><video class="lazy-video" data-src="./static/images/object/ours/00.mp4" preload="none" loop muted playsinline width="80%"></video></td>
+                  <td><video class="lazy-video" data-src="./static/images/object/ours/splited/00.mp4" preload="none" loop muted playsinline width="80%"></video> -->
                 </tr>
                 <tr class="result-row">
-                  <td><video src="./assets/examples/comparison_2.mp4" loading="lazy" autoplay loop muted></video></td>
+                  <td><video class="lazy-video" data-src="./assets/examples/comparison_2.mp4" preload="none" loop muted playsinline></video></td>
                 </tr>
                 <tr class="result-row">
-                  <td><video src="./assets/examples/comparison_3.mp4" loading="lazy" autoplay loop muted></video></td>
+                  <td><video class="lazy-video" data-src="./assets/examples/comparison_3.mp4" preload="none" loop muted playsinline></video></td>
                 </tr>
 
               </tbody>
@@ -760,15 +750,15 @@
         <div class="columns is-centered">
           <div class="column is-full-width">
             <h2 class="title is-3 has-text-centered">📄&nbsp;&nbsp; BibTeX &nbsp;&nbsp;📄</h2>
-            <pre class="bibtex-code">@misc{pan2025idcomposervlmgroundedonlinerl,
-            title={ID-Composer: VLM-Grounded Online RL for Compositional Multi-Subject Video Generation}, 
-            author={Panwang Pan and Jingjing Zhao and Yuchen Lin and Chenguo Lin and Chenxin Li and Hengyu Liu and Tingting Shen and Yadong MU},
-            year={2025},
-            eprint={2511.00511},
-            archivePrefix={arXiv},
-            primaryClass={cs.CV},
-            url={https://arxiv.org/abs/2511.00511}, 
-          }
+            <pre class="bibtex-code">@misc{pan2025idcraftervlmgroundedonlinerl,
+      title={ID-Crafter: VLM-Grounded Online RL for Compositional Multi-Subject Video Generation}, 
+      author={Panwang Pan and Jingjing Zhao and Yuchen Lin and Chenguo Lin and Chenxin Li and Hengyu Liu and Tingting Shen and Yadong MU},
+      year={2025},
+      eprint={2511.00511},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2511.00511}, 
+}
           </pre>
           </div>
         </div>
