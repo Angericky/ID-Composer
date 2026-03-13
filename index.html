@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ID-Composer</title>
+  <title>ID-Crafter</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -27,7 +27,7 @@
       var btn = document.getElementById('cite-btn');
       if (!btn) return;
       var bibtex = '@misc{pan2025idcraftervlmgroundedonlinerl,\n' +
-        '  title={ID-Composer: VLM-Grounded Online RL for Compositional Multi-Subject Video Generation},\n' +
+        '  title={ID-Crafter: VLM-Grounded Online RL for Compositional Multi-Subject Video Generation},\n' +
         '  author={Panwang Pan and Jingjing Zhao and Yuchen Lin and Chenguo Lin and Chenxin Li and Hengyu Liu and Tingting Shen and Yadong MU},\n' +
         '  year={2025},\n' +
         '  eprint={2511.00511},\n' +
@@ -215,7 +215,7 @@
 
             <!-- Title -->
             <h1 class="title is-2 publication-title">
-              <span class="morphing-text model-name"><b>ID-Composer</b></span>:
+              <span class="morphing-text model-name"><b>ID-Crafter</b></span>:
               <span>VLM-Grounded Online RL for Compositional Multi-Subject Video Generation</span>
             </h1>
             <div class="is-size-5 publication-authors">
@@ -257,7 +257,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/paulpanwang/ID-Composer"
+                <a href="https://github.com/paulpanwang/ID-Crafter"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false"
                       data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -322,7 +322,7 @@
             </div>
           </div>
           <div class="subtitle has-text-centered ">
-            <span class="morphing-text model-name"><b>ID-Composer</b></span> <b>is a multi-subject video synthesis model
+            <span class="morphing-text model-name"><b>ID-Crafter</b></span> <b>is a multi-subject video synthesis model
               that</b>
             <br>
             <b>generates subject-consistent videos with multiple references. </b>
@@ -347,11 +347,11 @@
               short in effectively integrating identity information from multiple subjects. This leads to semantic
               conflicts and suboptimal
               performance in preserving identities and interactions, limiting controllability and applicability. To
-              tackle this issue, we introduce <span class="morphing-text model-name"><b>ID-Composer</b></span>, <b>a
+              tackle this issue, we introduce <span class="morphing-text model-name"><b>ID-Crafter</b></span>, <b>a
                 framework for multi-subject video generation</b> that achieves superior identity preservation and
               semantic
               coherence.
-              <!-- <span class="morphing-text model-name"><b>ID-Composer</b></span> integrates three key components:
+              <!-- <span class="morphing-text model-name"><b>ID-Crafter</b></span> integrates three key components:
             </p>
             <p>
               (i) <b>a hierarchical identity-preserving attention mechanism</b> that progressively aggregates features
@@ -367,18 +367,18 @@
               the model for critical concepts.
             </p> -->
 
-              <span class="morphing-text model-name"><b>ID-Composer</b></span> incorporates <b>a hierarchical
+              <span class="morphing-text model-name"><b>ID-Crafter</b></span> incorporates <b>a hierarchical
                 identity-preserving attention mechanism</b> and <b>a VLM that performs reasoning</b> on the multimodal
               input into a video DiT to enable multi-subject video generation. <b>An online RL stage</b> further refines
               the concept alignment.
               <!-- Furthermore, we construct a new dataset to facilitate robust training and evaluation. -->
               <!-- <br>Extensive experiments demonstrate that <span
-                class="morphing-text model-name"><b>ID-Composer</b></span>,
+                class="morphing-text model-name"><b>ID-Crafter</b></span>,
               establishes new state-of-the-art performance on multi-subject
               video generation benchmarks, excelling in identity preservation, temporal consistency, and overall video
               quality. -->
 
-              <!-- <span class="morphing-text model-name"><b>ID-Composer</b></span>, <b>a novel framework that addresses this gap by tackling multi-subject video generation from a text prompt and reference images</b>. This task is challenging as it requires preserving subject identities, integrating semantics across subjects and modalities, and maintaining temporal consistency. -->
+              <!-- <span class="morphing-text model-name"><b>ID-Crafter</b></span>, <b>a novel framework that addresses this gap by tackling multi-subject video generation from a text prompt and reference images</b>. This task is challenging as it requires preserving subject identities, integrating semantics across subjects and modalities, and maintaining temporal consistency. -->
           </div>
         </div>
       </div>
@@ -398,7 +398,7 @@
           <div class="content has-text-justified">
             <img loading="lazy" src="./assets/images/method.png" width="100%" class="center-img" />
             <p>
-              The capability of <span class="morphing-text model-name"><b>ID-Composer</b></span> in generating
+              The capability of <span class="morphing-text model-name"><b>ID-Crafter</b></span> in generating
               multi-subject videos from a text prompt and multiple reference images is achieved by
               <b>(1) Hierarchical Identity-Preserving Attention</b>, which aggregates features both within and across
               subjects and modalities, ensuring identity consistency and faithful textual alignment;
@@ -406,7 +406,7 @@
               understanding to capture fine-grained interactions among multiple subjects and modalities.
               <b>(3) An online reinforcement learning phase</b> is further employed to enhance video quality and
               preserve subject identities across time. Extensive experiments show that <span
-                class="morphing-text model-name"><b>ID-Composer</b></span> outperforms previous methods in identity
+                class="morphing-text model-name"><b>ID-Crafter</b></span> outperforms previous methods in identity
               preservation, temporal consistency, and overall video quality.
             </p>
           </div>
@@ -433,7 +433,7 @@
 
           <h2 class="title is-3 has-text-centered">🎬&nbsp;&nbsp; Results &nbsp;&nbsp;🎬</h2>
           <h3 class="title is-4">Multi-Reference Subject-to-Video Generation</h3>
-          <p>ID-Composer can generate <b>natural and dynamic details</b> across multiple subjects from given text, such as
+          <p>ID-Crafter can generate <b>natural and dynamic details</b> across multiple subjects from given text, such as
             <b>fabric wrinkles induced by movement, wind-swept hair, and crumbs scattered from torn bread</b>.
           </p>
           <div class="columns is-multiline results-grid is-centered">
@@ -481,7 +481,7 @@
           <div class="columns is-multiline results-grid">
             <h3 class="title is-4">ID-preserving Generation</h3>
             <p>
-              ID-Composer faithfully preserves the identity of reference subjects (including people and items) while
+              ID-Crafter faithfully preserves the identity of reference subjects (including people and items) while
               producing vivid videos aligned with the given prompt.
             </p>
             <div class="column is-6">
